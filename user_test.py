@@ -15,7 +15,7 @@ class TestUser(unittest.TestCase):
         self.new_user = User("Brian","ng123")
         #create user object
 
-    def test_unit(self):
+    def test_init(self):
         '''
         test_initial test case to test if the object is initialized properly
         '''
@@ -52,6 +52,17 @@ class TestUser(unittest.TestCase):
         test_user.save_user()
         self.new_user.delete_user()#deleting a user
         self.assertEqual(len(User.user_list),1)
+    
+    def test_find_user_by_user_name(self):
+        '''
+        test to check if we can find a user user_name and display information
+        '''
+        self.new_user.save_user()
+        test_user = User("user","qw123")#new user
+        test_user.save_user()
+        found_user = User.find_by_user_name("user")
+        self.assertEqual(found_user.password,test_user.password)
+
 
     
 if __name__ == '__main__':
