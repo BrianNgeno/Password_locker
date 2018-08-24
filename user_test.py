@@ -14,6 +14,7 @@ class TestUser(unittest.TestCase):
         '''
         self.new_user = User("Brian","ng123")
         #create user object
+
     def test_unit(self):
         '''
         test_initial test case to test if the object is initialized properly
@@ -21,6 +22,11 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.new_user.user_name,"Brian")
         self.assertEqual(self.new_user.password,"ng123")
 
+    def tearDown(self):
+        '''
+        tearDown method that does clean up after each test case
+        '''
+        User.user_list=[]
 
     def test_save_user(self):
         '''
@@ -46,7 +52,7 @@ class TestUser(unittest.TestCase):
         test_user.save_user()
         self.new_user.delete_user()#deleting a user
         self.assertEqual(len(User.user_list),1)
-        
+
     
 if __name__ == '__main__':
     unittest.main()

@@ -19,11 +19,11 @@ class User:
         '''
         User.user_list.append(self)
 
-    def tearDown(self):
-        '''
-        tearDown method that does clean up after each test case
-        '''
-        User.user_list=[]
     
+    def delete_user(self):
+        '''
+        delete user method that deletes a saved user from the user_list
+        '''
+        User.user_list.remove(self)
     
 
