@@ -7,8 +7,8 @@ class User:
         '''
         __init__method that helps us define properties for our objects.
         Args:
-        user_name:New contact user_name.
-        password:New contact password.
+        user_name:New user user_name.
+        password:New user password.
         '''
         self.user_name = user_name
         self.password = password
