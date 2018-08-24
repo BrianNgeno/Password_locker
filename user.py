@@ -1,3 +1,4 @@
+import pyperclip
 class User:
     '''
     class that generates new instance of user
@@ -27,7 +28,7 @@ class User:
         User.user_list.remove(self)
     
     @classmethod
-    def find_by_user_name(cls,user_name):
+    def find_by_username(cls,username):
         '''
         method that takes in a user_name and returns a user that matches that user_name.
         
@@ -37,7 +38,7 @@ class User:
         User of that match the user_name
         '''
         for user in cls.user_list:
-            if user.user_name == user_name:
+            if user.user_name == username:
                 return user
 
     @classmethod
@@ -53,5 +54,18 @@ class User:
             if user.user_name == user_name:
                 return True
             
-        return False    
-        
+        return False   
+
+    @classmethod
+    def copy_password(cls,user):
+        user_found= User.find_by_user_name(user)
+
+        pyperclip.copy(user_found.password)
+        return cls.user_list    
+
+
+    @classmethod
+    def find_by_user_name(cls,user):
+        for user in User.user_list:
+            user.user_name = user
+            return user
