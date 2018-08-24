@@ -18,3 +18,12 @@ class User:
         save user method saves user object into user_list
         '''
         User.user_list.append(self)
+
+    def tearDown(self):
+        '''
+        tearDown method that does clean up after each test case
+        '''
+        User.user_list=[]
+    
+    
+
