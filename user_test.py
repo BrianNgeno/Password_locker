@@ -85,5 +85,13 @@ class TestUser(unittest.TestCase):
         User.copy_password("Brian")
         self.assertEqual(self.new_user.password,pyperclip.paste())
 
+    def test_validate_user(self):
+        '''
+        test if user is valid
+        '''
+        self.new_user.save_user()
+        User = user.validate_user("brian")
+        self.assertTrue(user)
+        
 if __name__ == '__main__':
     unittest.main()

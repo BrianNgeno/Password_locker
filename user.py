@@ -69,3 +69,13 @@ class User:
         for user in User.user_list:
             user.user_name = user
             return user
+    @classmethod
+    def validate_user(cls,user_name,password):
+        '''
+        method that validates a user 
+        '''
+        for user in User.user_list:
+            if user.user_name == user_name and user.password == password:
+                    return True
+            else:
+                return False
