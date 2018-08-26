@@ -90,7 +90,7 @@ class TestUser(unittest.TestCase):
         test if user is valid
         '''
         self.new_user.save_user()
-        User = user.validate_user("brian")
+        user = User.validate_user("brian","ng123")
         self.assertTrue(user)
         
 if __name__ == '__main__':
