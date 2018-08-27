@@ -92,6 +92,7 @@ class TestUser(unittest.TestCase):
         self.new_user.save_user()
         user = User.validate_user("brian","ng123")
         self.assertTrue(user)
-        
+    def test_display_user(self):
+        self.assertEqual(User.display_user(),User.user_list)   
 if __name__ == '__main__':
     unittest.main()

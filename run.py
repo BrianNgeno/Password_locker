@@ -34,6 +34,9 @@ def copy_password(user):
 def display_credential():
     return Credential.display_credential()
 
+def display_user():
+    return User.display_user()
+
 def validate_user(user_name,password):
     '''
     function that validates user
@@ -63,7 +66,10 @@ def credential_exist(account):
     function that checks if credentials exist
     '''
     Credential.credential_exist
-
+def find_by_user_name(user):
+    '''
+    '''
+    return User.find_by_user_name(user)
 
 def check_existing_user(password):
     return User.user_exist(password)
@@ -108,7 +114,7 @@ def main():
             print("Enter the user you want to search for")
             search_password = input()
             if check_existing_user(search_password):
-                search_user = find_user(search_password)
+                search_user = find_by_user_name(search_password)
                 print(f"{search_user.user_name} {search_user.password}")
                 print('-' * 6)
                 print("You are logged in succesfully")

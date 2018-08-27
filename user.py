@@ -53,7 +53,7 @@ class User:
         for user in cls.user_list:
             if user.user_name == user_name:
                 return True
-        return False   
+            return False   
 
     @classmethod
     def copy_password(cls,user):
@@ -78,3 +78,9 @@ class User:
                     return True
             else:
                 return False
+    @classmethod
+    def display_user(cls):
+        '''
+        method that is used to display users
+        '''
+        return cls.user_list
