@@ -114,6 +114,7 @@ def main():
                     print("Enter credential you wish to copy")
                     account = input()
                     Credential.copy_validation(account)
+                    print(f"\ncredential{account} copied succesfully")
 
                 if user_choice == "dl":
                     print("Enter the credential you wish to delete")
