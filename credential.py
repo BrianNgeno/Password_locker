@@ -41,7 +41,9 @@ class Credential:
         credential_found = Credential.find_by_account(validation)
 
         pyperclip.copy(credential_found.validation)
-        return cls.credential_list  
+        print("Credential copied succesfully") 
+        return cls.credential_list
+
         
     @classmethod
     def credential_exist(cls,validation):

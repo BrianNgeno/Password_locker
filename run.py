@@ -71,7 +71,9 @@ def main():
     user_name = input()
     print(f"Welcome -:{user_name}.Please use the short_codes provided")
     print('\n')
-    while True:      
+
+    while True:   
+        print("\033[1;32;1m \n")   
         print("Use these short codes:\n cu- create new user. \n lg-login. \n ex-exit Locker.")
         short_code=input().lower()
         if short_code == 'cu':
@@ -136,7 +138,17 @@ def main():
                 #     print(f"Account Name.......{search_credential.account")
                 #     delete_credential(search_credential)
 
-                    print("Bora Uhai")
+                if user_choice == "vw":
+                    print("Here is a list of all your credentials")
+                    print('\n')
+                    for credential in display_credential():
+                        print(f"Account:{credential.account}Password:{credential.validation}")
+                        print('\n')
+                    else:
+                        print('\n')
+                        print("You dont seem to have any credential saved yet")
+                        print('\n')
+                
        
         else:
             print("I really didn't get that. Please use the short codes")
