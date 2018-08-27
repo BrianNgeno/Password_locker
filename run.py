@@ -120,11 +120,9 @@ def main():
 
                 if user_choice == "dl":
                     print("Enter the credential you wish to delete")
-                    search_account = input()
-                    if check_existing_credential(search_account):
-                        search_credential = find_credential(search_account)
-                        print(f"{search_credential.account} {search_cred.validation}")
-                        delete_credential(search_account)
+                    acc_delete = input()
+                    if (acc_delete).credential_exist:
+                        Credential.credential_list.delete_credential(account)
                         print(f"{search_credential} deleted succesfully")
                 
                 if user_choice == "cd":
@@ -135,10 +133,7 @@ def main():
                 if user_choice == "ex":
                     print("Thanks For Checking In...")
                     break
-                # if check_existing_contacts(search_credential):
-                #     search_credential = find_credential(search_account)
-                #     print(f"Account Name.......{search_credential.account")
-                #     delete_credential(search_credential)
+                
 
                 if user_choice == "vw":
                     print("Here is a list of all your credentials")
