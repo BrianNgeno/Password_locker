@@ -86,6 +86,7 @@ def main():
         print("Use these short codes:\n cu- create new user. \n lg-login. \n ex-exit Locker.")
         short_code=input().lower()
         if short_code == 'cu':
+            
             print("New User_name")
             u_name = input()
 
@@ -130,13 +131,14 @@ def main():
                         validation = ''.join(random.choice(chars)for _ in range(10))
                         print(validation, end='')
                         save_credential(account,validation)
+                        
                         print(f"\n {account} Saved Succesfully")
 
                     if user_choice == "cp":
                         print("\n Enter credential you wish to copy")
                         account = input()
                         Credential.copy_validation(account)
-                        print(f"\n Credential-{account} copied succesfully")
+                        print(f"\033[1;32;1m \n Credential-{account} copied succesfully")
                         # else:
                         #     print('\n')
                         #     print("You dont seem to have any credential saved yet")
@@ -171,7 +173,7 @@ def main():
                     print("That user does not exist")
         
         else:
-            print("I really didn't get that. Please use the short codes")
+            print("\033[1;32;1m \n I really didn't get that. Please use the short codes")
 
 if __name__ == '__main__':
 
