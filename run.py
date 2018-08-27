@@ -33,6 +33,9 @@ def copy_password(user):
     '''
     user.copy_password()
 
+def display_credential():
+    return Credential.display_credential()
+
 def validate_user(user_name,password):
     '''
     function that validates user

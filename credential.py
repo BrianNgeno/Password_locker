@@ -40,11 +40,11 @@ class Credential:
     def copy_validation(cls,validation):
         credential_found = Credential.find_by_account(validation)
 
-        pyperclip.copy(credential_found.password)
+        pyperclip.copy(credential_found.validation)
         return cls.credential_list  
         
     @classmethod
-    def credential_exist(cls,account):
+    def credential_exist(cls,validation):
         '''
         method that checks if the credential exists
         Arg:
@@ -53,8 +53,14 @@ class Credential:
         if a credential matches the methods return a true but if the method fails returns false
         '''
         for credential in cls.credential_list:
-            if credential.account == account:
+            if credential.validation == validation:
                 return True
         return False 
    
+    @classmethod
+    def display_credential(cls):
+        '''
+        method that is used to display credentials
+        '''
+        return cls.credential_list
 
