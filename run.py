@@ -1,4 +1,5 @@
 #!/usr/bin/env python3.6
+import random
 from user import User
 from credential import Credential
 def create_user(user_name,password):
@@ -63,6 +64,10 @@ def credential_exist(account):
     '''
     Credential.credential_exist
 
+
+def check_existing_user(password):
+    return User.user_exist(password)
+
 def main():
     print("\033[1;31;1m \n") 
     print("Hello user please input your name")
@@ -91,63 +96,77 @@ def main():
             print("Be sure to save more credentials later...")
             break
 
+        # elif short_code == 'lg':
+        #     print("Enter User_name")
+        #     user_name = input()
+        #     print("Enter password")
+        #     print("-"*6)
+        #     password = input()
+        #     User.user_exist(user_name)
+        #     print(f"\nUser :{user_name} Validated")
         elif short_code == 'lg':
-            print("Enter User_name")
-            user_name = input()
-            print("Enter password")
-            print("-"*6)
-            password = input()
-            User.user_exist(user_name)
-            print(f"\nUser :{user_name} Validated")
-            while True:
-                print("\n use these short codes to perform anything:\n cc- create new credential. \n dl- delete credentials. \n cp- copy credentials. \n vw- view credentials. \n ex- Exit credential_list")
-                user_choice = input("\n Enter your choice: ")
-                if user_choice == "cc":
-                    print ("\n Enter Account")
-                    account = input()
-                    print("\n Enter Password")
-                    validation = input()
-                    save_credential(account,validation)
-                    print(f"{account} Saved Succesfully")
+            print("Enter the user you want to search for")
+            search_password = input()
+            if check_existing_user(search_password):
+                search_user = find_user(search_password)
+                print(f"{search_user.user_name} {search_user.password}")
+                print('-' * 6)
+                print("You are logged in succesfully")
+                while True:
+                    print("\n use these short codes to perform anything:\n cc- create new credential. \n dl- delete credentials. \n cp- copy credentials. \n vw- view credentials. \n ex- Exit credential_list")
+                    user_choice = input("\n Enter your choice: ")
+                    if user_choice == "cc":
+                        print ("\n Enter Account")
+                        account = input()
+                        print("\n Your Password is..")
+                        validation = ''
+                        chars = "abcdefghijklmnopqrstuvwxyz1234567890!#.,?"
+                        validation = ''.join(random.choice(chars)for _ in range(10))
+                        print(validation, end='')
+                        save_credential(account,validation)
+                        print(f"\n {account} Saved Succesfully")
 
-                if user_choice == "cp":
-                    print("\n Enter credential you wish to copy")
-                    account = input()
-                    Credential.copy_validation(account)
-                    print(f"\n Credential-{account} copied succesfully")
-                    # else:
-                    #     print('\n')
-                    #     print("You dont seem to have any credential saved yet")
-                    #     print('\n')
+                    if user_choice == "cp":
+                        print("\n Enter credential you wish to copy")
+                        account = input()
+                        Credential.copy_validation(account)
+                        print(f"\n Credential-{account} copied succesfully")
+                        # else:
+                        #     print('\n')
+                        #     print("You dont seem to have any credential saved yet")
+                        #     print('\n')
+                        
+
+                    if user_choice == "dl":
+                        print("\n Enter the credential you wish to delete")
+                        acc_del = input()
+                        delete_credential(acc_del)
+                        print(f"\n Credential -{acc_del} -deleted succesfully")
+                    
+                    # if user_choice == "cd":
+                    #     print("Enter user you wish to copy details")
+                    #     user_name = input()
+                    #     User.copy_password(user_name)
+
+                    if user_choice == "ex":
+                        print("\n Thanks For Checking In...")
+                        break
                     
 
-                if user_choice == "dl":
-                    print("\n Enter the credential you wish to delete")
-                    acc_del = input()
-                    delete_credential(acc_del)
-                    print(f"\n Credential -{acc_del} -deleted succesfully")
-                
-                # if user_choice == "cd":
-                #     print("Enter user you wish to copy details")
-                #     user_name = input()
-                #     User.copy_password(user_name)
-
-                if user_choice == "ex":
-                    print("\n Thanks For Checking In...")
-                    break
-                
-
-                if user_choice == "vw":
-                    print("\n Here is a list of all your credentials")
-                    print('\n')
-                    for credential in display_credential():
-                        print(f"Account:{credential.account}Password:{credential.validation}")
+                    if user_choice == "vw":
+                        print("\n Here is a list of all your credentials")
                         print('\n')
-             
-            
-       
+                        for credential in display_credential():
+                            print(f"Account:{credential.account}Password:{credential.validation}")
+                            print('\n')
+                
+                
+                else:           
+                    print("That user does not exist")
+        
         else:
             print("I really didn't get that. Please use the short codes")
+
 if __name__ == '__main__':
 
     main()
