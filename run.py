@@ -111,16 +111,21 @@ def main():
                     print(f"{account} Saved Succesfully")
 
                 if user_choice == "cp":
-                    print("Enter credential you wish to copy")
+                    print("\n Enter credential you wish to copy")
                     account = input()
                     Credential.copy_validation(account)
-                    print(f"\ncredential{account} copied succesfully")
+                    print(f"\n Credential-{account} copied succesfully")
+                    # else:
+                    #     print('\n')
+                    #     print("You dont seem to have any credential saved yet")
+                    #     print('\n')
+                    
 
                 if user_choice == "dl":
-                    print("Enter the credential you wish to delete")
+                    print("\n Enter the credential you wish to delete")
                     acc_del = input()
                     delete_credential(acc_del)
-                    print(f"{acc_del} -deleted succesfully")
+                    print(f"\n Credential -{acc_del} -deleted succesfully")
                 
                 # if user_choice == "cd":
                 #     print("Enter user you wish to copy details")
@@ -128,20 +133,17 @@ def main():
                 #     User.copy_password(user_name)
 
                 if user_choice == "ex":
-                    print("Thanks For Checking In...")
+                    print("\n Thanks For Checking In...")
                     break
                 
 
                 if user_choice == "vw":
-                    print("Here is a list of all your credentials")
+                    print("\n Here is a list of all your credentials")
                     print('\n')
                     for credential in display_credential():
                         print(f"Account:{credential.account}Password:{credential.validation}")
                         print('\n')
-                else:
-                    print('\n')
-                    print("You dont seem to have any credential saved yet")
-                    print('\n')
+             
             
        
         else:
