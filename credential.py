@@ -18,12 +18,14 @@ class Credential:
         function that saves object details into credentials_list
         '''
         Credential.credential_list.append(self)
-    
-    def delete_credential(self):
+    @classmethod
+    def delete_credential(cls,account):
         '''
         delete credential method deletes a saved contact from the credential_list
         '''
-        Credential.credential_list.remove(self)
+        for credential in cls.credential_list:
+            if credential.account == account:
+                Credential.credential_list.remove(credential)
     
 
     @classmethod

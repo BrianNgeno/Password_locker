@@ -14,9 +14,6 @@ def save_user(user):
     '''
     user.save_user()
 
-def check_existing_credential(search_account):
-    return Credential.find_by_account(search_account)
-
 def save_credential(account,validation):
     account = Credential(account,validation)
     Credential.save_credential(account)
@@ -103,12 +100,12 @@ def main():
             password = input()
             User.user_exist(user_name)
             while True:
-                print("use these short codes to perform anything:\n cc- create new credential. \n dl- delete credentials. \n cp- copy credentials. \n vw- view credentials. \n cd- copy user detail. \n ex- Exit credential_list")
-                user_choice = input("Enter your choice: ")
+                print("use these short codes to perform anything:\n cc- create new credential. \n dl- delete credentials. \n cp- copy credentials. \n vw- view credentials. \n ex- Exit credential_list")
+                user_choice = input("\n Enter your choice: ")
                 if user_choice == "cc":
-                    print ("Enter Account")
+                    print ("\n Enter Account")
                     account = input()
-                    print("Enter Password")
+                    print("\n Enter Password")
                     validation = input()
                     save_credential(account,validation)
                     print(f"{account} Saved Succesfully")
@@ -120,16 +117,14 @@ def main():
 
                 if user_choice == "dl":
                     print("Enter the credential you wish to delete")
-                    acc_delete = input()
-                    if credential_exist(acc_delete):
-                        acc_delete = find_credential(acc_delete)
-                        delete_credential(acc_delete)
-                        print(f"{search_credential} deleted succesfully")
+                    acc_del = input()
+                    delete_credential(acc_del)
+                    print(f"{acc_del} -deleted succesfully")
                 
-                if user_choice == "cd":
-                    print("Enter user you wish to copy details")
-                    user_name = input()
-                    User.copy_password(user_name)
+                # if user_choice == "cd":
+                #     print("Enter user you wish to copy details")
+                #     user_name = input()
+                #     User.copy_password(user_name)
 
                 if user_choice == "ex":
                     print("Thanks For Checking In...")
