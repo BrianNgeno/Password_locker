@@ -78,7 +78,7 @@ class TestCredential(unittest.TestCase):
         self.new_credential.save_credential()
         test_credential = Credential("facebook","123qw")#new credential
         test_credential.save_credential()
-        credential_exists = Credential.credential_exist("credential")
+        credential_exists = Credential.credential_exist("123qw")
         self.assertTrue(credential_exists)
 
     def test_display_credential(self):
