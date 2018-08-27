@@ -121,8 +121,9 @@ def main():
                 if user_choice == "dl":
                     print("Enter the credential you wish to delete")
                     acc_delete = input()
-                    if (acc_delete).credential_exist:
-                        Credential.credential_list.delete_credential(account)
+                    if credential_exist(acc_delete):
+                        acc_delete = find_credential(acc_delete)
+                        delete_credential(acc_delete)
                         print(f"{search_credential} deleted succesfully")
                 
                 if user_choice == "cd":
