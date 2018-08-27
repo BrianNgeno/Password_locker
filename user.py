@@ -74,7 +74,7 @@ class User:
         method that validates a user 
         '''
         for user in User.user_list:
-            if user.user_name == user_name and user.password == password:
+            if user:
                     return True
             else:
                 return False

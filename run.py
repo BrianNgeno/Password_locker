@@ -67,13 +67,15 @@ def credential_exist(account):
     Credential.credential_exist
 
 def main():
+    print("\033[1;31;1m \n") 
     print("Hello user please input your name")
     user_name = input()
+    print(f"User :{user_name} Validated")
     print(f"Welcome -:{user_name}.Please use the short_codes provided")
     print('\n')
 
     while True:   
-        print("\033[1;32;1m \n")   
+        print("\033[1;33;1m \n")   
         print("Use these short codes:\n cu- create new user. \n lg-login. \n ex-exit Locker.")
         short_code=input().lower()
         if short_code == 'cu':
@@ -144,11 +146,11 @@ def main():
                     for credential in display_credential():
                         print(f"Account:{credential.account}Password:{credential.validation}")
                         print('\n')
-                    else:
-                        print('\n')
-                        print("You dont seem to have any credential saved yet")
-                        print('\n')
-                
+                else:
+                    print('\n')
+                    print("You dont seem to have any credential saved yet")
+                    print('\n')
+            
        
         else:
             print("I really didn't get that. Please use the short codes")
