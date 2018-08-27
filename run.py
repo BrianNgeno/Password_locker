@@ -67,8 +67,7 @@ def main():
     print("\033[1;31;1m \n") 
     print("Hello user please input your name")
     user_name = input()
-    print(f"User :{user_name} Validated")
-    print(f"Welcome -:{user_name}.Please use the short_codes provided")
+    print(f"\nWelcome -:{user_name}.Please use the short_codes provided")
     print('\n')
 
     while True:   
@@ -99,8 +98,9 @@ def main():
             print("-"*6)
             password = input()
             User.user_exist(user_name)
+            print(f"\nUser :{user_name} Validated")
             while True:
-                print("use these short codes to perform anything:\n cc- create new credential. \n dl- delete credentials. \n cp- copy credentials. \n vw- view credentials. \n ex- Exit credential_list")
+                print("\n use these short codes to perform anything:\n cc- create new credential. \n dl- delete credentials. \n cp- copy credentials. \n vw- view credentials. \n ex- Exit credential_list")
                 user_choice = input("\n Enter your choice: ")
                 if user_choice == "cc":
                     print ("\n Enter Account")
